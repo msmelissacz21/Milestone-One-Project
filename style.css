@@ -3,3 +3,7 @@ main {
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+body {
+    background-image: url(./images/Map/mapTest.jpg);
+}
