@@ -13,7 +13,6 @@ body {
     height: 5000px;
     width: 5000px;
     overflow: hidden;
-    background-image: url(./images/Map/mapTest.jpg);
     position: absolute;
     left: 0px;
     top: 0px;
@@ -27,6 +26,7 @@ canvas {
 
 .catToken {
     position: fixed;
+    width: 128px;
     left: calc(50vw - 16px);
     top: calc(50vh - 16px); 
 
