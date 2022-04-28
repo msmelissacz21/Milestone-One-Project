@@ -1,4 +1,9 @@
-const character = newImage('./images/Cat-character/static.gif')
+
+let character = document.createElement('img')
+character.src = './images/Cat-character/static.gif'
+document.body.append(character)
+
+character.classList.add("catToken")
 
 let lastDirection
 
@@ -26,4 +31,27 @@ function handleDirectionChange(direction){
     }
 }
 
-move(character).withArrowKeys(100, 250, handleDirectionChange)
+document.addEventListener('keydown', (event) => {
+    if (event.repeat) {
+        return
+    }
+    switch (event.key) {
+        case 'ArrowUp':
+            handleDirectionChange('north')
+            break;
+        case 'ArrowDown':
+            handleDirectionChange('south')
+            break;
+        case 'ArrowRight':
+            handleDirectionChange('east')
+            break;
+        case 'ArrowLeft':
+            handleDirectionChange('west')
+            break;
+    }
+
+});
+
+document.addEventListener('keyup', () => {
+    handleDirectionChange(null)
+})

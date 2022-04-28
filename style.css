@@ -5,5 +5,29 @@ main {
 }
 
 body {
+    overflow: hidden;
+    margin: 0px;
+}
+
+#map {
+    height: 5000px;
+    width: 5000px;
+    overflow: hidden;
     background-image: url(./images/Map/mapTest.jpg);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+
+.catToken {
+    position: fixed;
+    left: calc(50vw - 16px);
+    top: calc(50vh - 16px); 
+
 }
