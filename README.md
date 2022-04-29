@@ -1,7 +1,7 @@
 # Milestone-One-Project
 
 How to play:
-Use the arrow keys to move Mr. Kitty around to collect as many fish as possible in the alloted time.  The player needs to score 45 points by the time limit to win.
+Use the arrow keys to move Mr. Kitty around to collect as many fish as possible in the alloted time.  The player needs to score 45 points by the time limit (25 seconds) to win.
 
 
 Why this game was made:
@@ -11,7 +11,7 @@ Additionally I wanted to experiment with a large map that my chosen character co
 
 
 Future potential updates:
-Adding collision, adding more tile pieces, updating Mr. Kitties images to match the background style better, compress code, address diagnal walking, make overall style more appealing, add dog enemy(already located in images), reconfigure scoring and winning, add music, make the map larger and more interesting, add water tiles, add buildings
+Adding collision, adding more tile pieces, updating Mr. Kitties images to match the background style better, compress code, address diagnal walking, make overall style more appealing, add dog enemy(already located in images), reconfigure scoring and winning, add music, make the map larger and more interesting, add water tiles, add buildings, adding more objects
 
 Credit:
 This is the first project in my fullstack development course.

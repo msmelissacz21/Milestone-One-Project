@@ -12,9 +12,12 @@ let mapData = '\
 200000000000000000000004\n\
 733333333333333333333338\n\
 '
-
+// Note: need to define fishArray for fish to be appended/pushed to
 let fishArray = []
 
+// Note: places a fish randomly from left and top styling.  It also randomly places the fish inside of the tiles that randomly spawn a fish.  ZIndex is 200 so
+// that the fish image will be on top of the tile map.  The fish that are appended to the map and also stored in an array with push.  This is to help with
+// scoring and collision.
 function placeFish(left, top) {
     if(Math.random() > .2) {
         left = left + (Math.random() * 128)
@@ -30,7 +33,8 @@ function placeFish(left, top) {
     }
 }
 
-time = 30;
+// Note: setting the timing of the game and displaying that information
+time = 25;
 let gametime = setInterval(()=> {
     hud.innerHTML = hud.innerHTML.substring(0, hud.innerHTML.indexOf('|')) + '| Time:' + time--
     if(time <= 0) {
@@ -45,17 +49,22 @@ let points = 0
 let hud = document.getElementById('hud')
 hud.innerHTML = '<h1>Points: ' + points++ + '</h1> |'
 // Note: half cat width is 64
+// programming for the collision of the intersection of the cat and the fish
 function intersection(fishElement, catLeft, catTop) {
     if(!fishElement) {
         return
     }
+    // converting string to a number and adding 10 
     let fishCenterLeft = Number(fishElement.style.left.replace('px', ''))+10
     let fishCenterTop = Number(fishElement.style.top.replace('px', ''))+10
 
+// 64 px is have the size of the cat image
     if(fishCenterLeft >= catLeft - 64 && fishCenterLeft <= catLeft + 64) {
         if(fishCenterTop >= catTop - 64 && fishCenterTop <= catTop + 64) {
             map.removeChild(fishElement)
             hud.innerHTML = '<h1>Points: ' + points++ + '</h1> ' + hud.innerHTML.substring(hud.innerHTML.indexOf('|'), hud.innerHTML.length)
+
+             // hiding the hud after game time runs down and the player wins displaying WIN and a green background
             if(points >= 45) {
                 map.style.visibility = 'hidden'
                 hud.style.visibility = 'hidden'
@@ -69,7 +78,7 @@ function intersection(fishElement, catLeft, catTop) {
     return false
 }
 
-
+// Note: setting the specific fish to undefined the next time it gets called so it is no longer displayed
 setInterval(() => {
     for(let i=0; i<fishArray.length; i++) {
 

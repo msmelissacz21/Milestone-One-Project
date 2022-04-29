@@ -9,6 +9,8 @@ main {
 body {
     overflow: hidden;
     margin: 0px;
+    background-color: green;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Note: for this id, z-idex of -1 was used to set the map behind other objects */
@@ -40,24 +42,30 @@ to ensure central positioning.  */
 /* Note: box-shadow is used to fade edges of hud div/id, fixed position helps keep the hud on the screen */
 #hud {
     background-color: black;
-    opacity: 50%;
+    opacity: 80%;
     display: flex;
     position: fixed;
     z-index:10;
     height: 9vh;
-    width: 30vw;
+    width: 9vw;
     left: 20px;
     top: 20px;
     box-shadow: 0 0 3px 10px black;
     color: green;
-
-
 }
 
 #lose {
     visibility: hidden;
+    display: flex;
+    justify-content: center;
+    font-size: 400px;
+    text-shadow: 2px 2px 8px darkred;
 }
 
 #win {
     visibility: hidden;
+    display: flex;
+    justify-content: center;
+    font-size: 400px;
+    text-shadow: 2px 2px 8px darkgreen;
 }
