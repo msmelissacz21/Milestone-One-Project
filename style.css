@@ -49,5 +49,15 @@ to ensure central positioning.  */
     left: 20px;
     top: 20px;
     box-shadow: 0 0 3px 10px black;
+    color: green;
 
+
+}
+
+#lose {
+    visibility: hidden;
+}
+
+#win {
+    visibility: hidden;
 }

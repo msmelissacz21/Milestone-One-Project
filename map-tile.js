@@ -30,22 +30,52 @@ function placeFish(left, top) {
     }
 }
 
+time = 30;
+let gametime = setInterval(()=> {
+    hud.innerHTML = hud.innerHTML.substring(0, hud.innerHTML.indexOf('|')) + '| Time:' + time--
+    if(time <= 0) {
+        map.style.visibility = 'hidden'
+        hud.style.visibility = 'hidden'
+        document.body.style.backgroundColor = '#a83232'
+        document.getElementById('lose').style.visibility = 'visible'
+    }
+}, 1000)
+
+let points = 0
+let hud = document.getElementById('hud')
+hud.innerHTML = '<h1>Points: ' + points++ + '</h1> |'
 // Note: half cat width is 64
 function intersection(fishElement, catLeft, catTop) {
+    if(!fishElement) {
+        return
+    }
     let fishCenterLeft = Number(fishElement.style.left.replace('px', ''))+10
     let fishCenterTop = Number(fishElement.style.top.replace('px', ''))+10
 
     if(fishCenterLeft >= catLeft - 64 && fishCenterLeft <= catLeft + 64) {
         if(fishCenterTop >= catTop - 64 && fishCenterTop <= catTop + 64) {
-            fishElement.style.visibility = 'hidden'
+            map.removeChild(fishElement)
+            hud.innerHTML = '<h1>Points: ' + points++ + '</h1> ' + hud.innerHTML.substring(hud.innerHTML.indexOf('|'), hud.innerHTML.length)
+            if(points >= 45) {
+                map.style.visibility = 'hidden'
+                hud.style.visibility = 'hidden'
+                document.body.style.backgroundColor = '#46a832'
+                clearInterval(gametime)
+                document.getElementById('win').style.visibility = 'visible'
+            }
+            return true
         }
     }
+    return false
 }
+
 
 setInterval(() => {
     for(let i=0; i<fishArray.length; i++) {
 
-        intersection(fishArray[i], charLeft, charTop)
+        if(intersection(fishArray[i], charLeft, charTop)) {
+            fishArray[i] = undefined
+        }
     }
 },100)
 
