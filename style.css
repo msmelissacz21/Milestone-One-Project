@@ -4,11 +4,15 @@ main {
     justify-content: space-evenly;
 }
 
+
+/* Note: default margin needs to be removed by setting it to 0 */
 body {
     overflow: hidden;
     margin: 0px;
 }
 
+/* Note: for this id, z-idex of -1 was used to set the map behind other objects */
+/* Note: cursor issues noticed, likely due to unknown mac settings, likely works on windows etc. Future fix to be made as of end of April 2022*/
 #map {
     height: 5000px;
     width: 5000px;
@@ -17,17 +21,33 @@ body {
     left: 0px;
     top: 0px;
     z-index: -1;
+    cursor: url(./images/Cursor/Untitled-5.png), auto;
 }
 
-canvas {
-    border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
-}
 
+/* Note: for this class, special css syntax is need to get calc to work - ie space before the negative sign and after  */
+/* Note: Cat image is fixed to the middle of the screen using fixed positioning and aligning with left and top.  -16px is half of the image size
+to ensure central positioning.  */
 .catToken {
     position: fixed;
     width: 128px;
     left: calc(50vw - 16px);
     top: calc(50vh - 16px); 
+}
+
+
+
+/* Note: box-shadow is used to fade edges of hud div/id, fixed position helps keep the hud on the screen */
+#hud {
+    background-color: black;
+    opacity: 50%;
+    display: flex;
+    position: fixed;
+    z-index:10;
+    height: 9vh;
+    width: 30vw;
+    left: 20px;
+    top: 20px;
+    box-shadow: 0 0 3px 10px black;
 
 }

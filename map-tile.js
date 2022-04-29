@@ -1,3 +1,5 @@
+// Note: this generates a tile map base on the for loop below
+
 let mapData = '\
 511111111111111111111116\n\
 20000000000000000000a338\n\
@@ -11,11 +13,53 @@ let mapData = '\
 733333333333333333333338\n\
 '
 
+let fishArray = []
+
+function placeFish(left, top) {
+    if(Math.random() > .2) {
+        left = left + (Math.random() * 128)
+        top = top + (Math.random() * 128)
+        let fish = document.createElement('img')
+        fish.src = './images/Goldfish/not-a-goldfish.png'
+        fish.style.left = left + 'px'
+        fish.style.top = top + 'px'
+        fish.style.position = 'absolute'
+        fish.style.zIndex = '200'
+        map.appendChild(fish)
+        fishArray.push(fish)
+    }
+}
+
+// Note: half cat width is 64
+function intersection(fishElement, catLeft, catTop) {
+    let fishCenterLeft = Number(fishElement.style.left.replace('px', ''))+10
+    let fishCenterTop = Number(fishElement.style.top.replace('px', ''))+10
+
+    if(fishCenterLeft >= catLeft - 64 && fishCenterLeft <= catLeft + 64) {
+        if(fishCenterTop >= catTop - 64 && fishCenterTop <= catTop + 64) {
+            fishElement.style.visibility = 'hidden'
+        }
+    }
+}
+
+setInterval(() => {
+    for(let i=0; i<fishArray.length; i++) {
+
+        intersection(fishArray[i], charLeft, charTop)
+    }
+},100)
+
 
 let x = 0
 let y = 0
 
+// This can be compressed, future update option as of end of April 2022
+// Tile size is 128 px
+
 for (let char of mapData) {
+    if(char != '\n') {
+        placeFish(x, y);
+    }
     if(char== '0') {
         let dTile = document.createElement('img')
         dTile.style.position = 'absolute'
