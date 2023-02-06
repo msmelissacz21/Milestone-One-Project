@@ -46,19 +46,23 @@ to ensure central positioning.  */
     display: flex;
     position: fixed;
     z-index:10;
-    height: 9vh;
-    width: 9vw;
+    min-width: 90px;
     left: 20px;
     top: 20px;
     box-shadow: 0 0 3px 10px black;
     color: green;
 }
 
+h1 {
+    margin: 0%;
+    padding: 0%;
+}
+
 #lose {
     visibility: hidden;
     display: flex;
     justify-content: center;
-    font-size: 400px;
+    font-size: 200px;
     text-shadow: 2px 2px 8px darkred;
 }
 
@@ -66,6 +70,6 @@ to ensure central positioning.  */
     visibility: hidden;
     display: flex;
     justify-content: center;
-    font-size: 400px;
+    font-size: 200px;
     text-shadow: 2px 2px 8px darkgreen;
 }
